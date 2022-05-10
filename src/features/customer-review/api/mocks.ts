@@ -1,6 +1,6 @@
 import {Review} from '../types/models';
 
-import {ReviewPayload} from './review';
+import {ReviewPayload} from './reviews';
 
 export const MOCK_UUID = '00000000-0000-0000-0000-000000000000';
 export const MOCK_DATE = new Date(2020, 3, 1);
