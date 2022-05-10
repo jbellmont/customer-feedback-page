@@ -5,6 +5,7 @@ import Input from './Input';
 const Form = () => {
   const [nameValue, setNameValue] = useState('');
   const [emailValue, setEmailValue] = useState('');
+  const [commentValue, setCommentValue] = useState('');
 
   return (
     <form>
@@ -22,6 +23,14 @@ const Form = () => {
         setValue={setEmailValue}
         type="email"
         value={emailValue}
+      />
+      <Input
+        errorText={'Please provide a comment'}
+        label="Comment"
+        multiline
+        setValue={setCommentValue}
+        type="text"
+        value={commentValue}
       />
     </form>
   );
