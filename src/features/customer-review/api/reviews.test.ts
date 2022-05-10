@@ -10,7 +10,7 @@ import {
   MOCK_REVIEW_PAYLOAD,
   MOCK_NEW_REVIEW,
 } from './mocks';
-import {getReviews, createReview} from './review';
+import {getReviews, createReview} from './reviews';
 
 beforeAll(() => {
   jest.useFakeTimers('modern');
@@ -23,7 +23,7 @@ beforeEach(() => {
   MOCK_REVIEW_PAYLOADS.forEach((review) => createReview(review));
 });
 
-describe('Review crud operations', () => {
+describe('Reviews crud operations', () => {
   it('should retrieve all stored Reviews', () => {
     const reviews: Review[] = getReviews();
 

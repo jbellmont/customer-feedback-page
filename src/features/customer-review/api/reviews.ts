@@ -11,10 +11,10 @@ export interface ReviewPayload {
   comment: string;
 }
 
-export const REVIEW_STORAGE_KEY = 'reviews';
+export const REVIEWS_STORAGE_KEY = 'reviews';
 
 export const getReviews = (): Review[] => {
-  const serializedReviews: string = localStorage.getItem(REVIEW_STORAGE_KEY)!;
+  const serializedReviews: string = localStorage.getItem(REVIEWS_STORAGE_KEY)!;
   if (!serializedReviews) return [];
 
   const parsedReviews: Review[] = JSON.parse(
@@ -38,5 +38,5 @@ export const createReview = (review: ReviewPayload) => {
   currentReviews.push(newReview);
 
   const serializedReviews = JSON.stringify(currentReviews);
-  localStorage.setItem(REVIEW_STORAGE_KEY, serializedReviews);
+  localStorage.setItem(REVIEWS_STORAGE_KEY, serializedReviews);
 };
