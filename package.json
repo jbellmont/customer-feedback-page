@@ -10,7 +10,7 @@
     "prepare": "husky install",
     "prettier": "prettier --ignore-path .gitignore --write \"**/*.+(js|json|ts|tsx)\"",
     "preview": "vite preview",
-    "test": "jest"
+    "test": "jest --passWithNoTests"
   },
   "dependencies": {
     "eslint-plugin-testing-library": "^5.4.0",
