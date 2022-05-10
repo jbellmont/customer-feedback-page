@@ -7,18 +7,31 @@ const EMAIL_REGEX =
 export interface InputProps {
   errorText: string;
   label: string;
+  multiline?: boolean;
   setValue: (value: string) => void;
   type: 'text' | 'email';
   value: string;
 }
 
-export const MAX_CHAR_LENGTH = 255;
+export const SINGLE_LINE_CHARACTER_LIMIT = 255;
+export const MULTI_LINE_CHARACTER_LIMIT = 1000;
 
-const Input = ({errorText, setValue, label, type, value}: InputProps) => {
+const Input = ({
+  errorText,
+  label,
+  multiline,
+  setValue,
+  type,
+  value,
+}: InputProps) => {
   const [isValid, setIsValid] = useState(true);
 
+  const maxCharacters = multiline
+    ? MULTI_LINE_CHARACTER_LIMIT
+    : SINGLE_LINE_CHARACTER_LIMIT;
+
   const isNameValid = (name: string): boolean => {
-    return name.length > 0 && name.length <= MAX_CHAR_LENGTH;
+    return name.length > 0 && name.length <= maxCharacters;
   };
 
   const isEmailValid = (email: string): boolean => {
@@ -49,11 +62,13 @@ const Input = ({errorText, setValue, label, type, value}: InputProps) => {
       helperText={isValid ? null : errorText}
       id="outlined-basic"
       inputProps={{
-        maxLength: MAX_CHAR_LENGTH,
+        maxLength: maxCharacters,
       }}
       label={label}
+      multiline={multiline}
       onChange={handleOnChange}
       required
+      minRows={multiline ? 3 : 1}
       type={type}
       value={value}
       variant="outlined"

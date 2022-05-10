@@ -1,7 +1,11 @@
 import '@testing-library/jest-dom';
 import {fireEvent, render, screen} from '@testing-library/react';
 
-import Input, {InputProps, MAX_CHAR_LENGTH} from './Input';
+import Input, {
+  InputProps,
+  MULTI_LINE_CHARACTER_LIMIT,
+  SINGLE_LINE_CHARACTER_LIMIT,
+} from './Input';
 
 const setValueMock = jest.fn();
 
@@ -28,16 +32,35 @@ describe('Input component', () => {
     expect(inputElement).toBeInTheDocument();
   });
 
-  it('should show error message when max-character limit is exceeded', () => {
-    render(<Input {...baseProps} value="" />);
-    const inputElement = screen.getByRole('textbox');
-    fireEvent.change(inputElement, {
-      target: {value: 'a'.repeat(MAX_CHAR_LENGTH + 1)},
-    });
-    const errorElement = screen.getByText(/^Error/i);
+  it(
+    'should show error message when single-line max-character limit is ' +
+      'exceeded',
+    () => {
+      render(<Input {...baseProps} value="" />);
+      const inputElement = screen.getByRole('textbox');
+      fireEvent.change(inputElement, {
+        target: {value: 'a'.repeat(SINGLE_LINE_CHARACTER_LIMIT + 1)},
+      });
+      const errorElement = screen.getByText(/^Error/i);
 
-    expect(errorElement).toBeInTheDocument();
-  });
+      expect(errorElement).toBeInTheDocument();
+    }
+  );
+
+  it(
+    'should show error message when multi-line max-character limit is ' +
+      'exceeded',
+    () => {
+      render(<Input {...baseProps} multiline value="" />);
+      const inputElement = screen.getByRole('textbox');
+      fireEvent.change(inputElement, {
+        target: {value: 'a'.repeat(MULTI_LINE_CHARACTER_LIMIT + 1)},
+      });
+      const errorElement = screen.getByText(/^Error/i);
+
+      expect(errorElement).toBeInTheDocument();
+    }
+  );
 
   it('should show error message when invalid email is provided', () => {
     render(<Input {...baseProps} type="email" />);
