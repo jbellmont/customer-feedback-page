@@ -6,6 +6,14 @@ module.exports = {
   extends: ['plugin:react/recommended', 'google', 'prettier'],
   overrides: [
     {
+      files: ['**/*.ts', '**/*.tsx'],
+      parser: '@typescript-eslint/parser',
+      settings: {
+        react: {version: 'detect'},
+        'import/resolver': {
+          typescript: {},
+        },
+      },
       extends: [
         'plugin:jest-dom/recommended',
         'plugin:jsx-a11y/recommended',
