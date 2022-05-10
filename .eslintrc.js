@@ -4,6 +4,7 @@ module.exports = {
     es2021: true,
   },
   extends: ['plugin:react/recommended', 'google', 'prettier'],
+  ignorePatterns: '**/*.d.ts',
   overrides: [
     {
       files: ['**/*.ts', '**/*.tsx'],
