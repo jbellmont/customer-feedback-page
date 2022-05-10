@@ -28,3 +28,4 @@ dist-ssr
 
 # Vite
 vite.config.js
+vite-env.d.ts
