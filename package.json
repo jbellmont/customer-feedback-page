@@ -5,7 +5,7 @@
   "scripts": {
     "build": "tsc && vite build",
     "dev": "vite",
-    "format": "npm run prettier -- --write",
+    "format": "npm run prettier --write",
     "lint": "eslint --fix --ext .js,.ts,.tsx ./src --ignore-path .gitignore",
     "prepare": "husky install",
     "prettier": "prettier --ignore-path .gitignore --write \"**/*.+(js|json|ts|tsx)\"",
@@ -43,9 +43,8 @@
     "vite": "^2.9.7"
   },
   "lint-staged": {
-    "*.+(ts|tsx)": [
+    "src/**/*.{js,ts,jsx,tsx}": [
       "npm run format && npm run lint"
-    ],
-    "*.{js,ts,tsx}": "eslint --cache --fix"
+    ]
   }
 }
