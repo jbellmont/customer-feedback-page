@@ -1,5 +1,5 @@
 import {Button} from '@mui/material';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 
 import Input from './Input';
 import SelectRating from './SelectRating';
@@ -15,6 +15,27 @@ const Form = () => {
 
   const [commentValue, setCommentValue] = useState('');
   const [isCommentValid, setIsCommentValid] = useState(true);
+
+  const [isFormValid, setIsFormValid] = useState(false);
+
+  useEffect(() => {
+    const inputsHaveValues = Boolean(
+      nameValue && emailValue && ratingValue && commentValue
+    );
+    const inputsAreValid = Boolean(
+      isNameValid && isEmailValid && isCommentValid
+    );
+
+    setIsFormValid(inputsHaveValues && inputsAreValid);
+  }, [
+    nameValue,
+    emailValue,
+    ratingValue,
+    commentValue,
+    isNameValid,
+    isEmailValid,
+    isCommentValid,
+  ]);
 
   return (
     <form>
@@ -48,7 +69,9 @@ const Form = () => {
         type="text"
         value={commentValue}
       />
-      <Button variant="contained">Submit review</Button>
+      <Button disabled={!isFormValid} variant="contained">
+        Submit review
+      </Button>
     </form>
   );
 };
