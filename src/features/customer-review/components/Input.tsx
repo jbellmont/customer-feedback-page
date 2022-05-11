@@ -1,4 +1,3 @@
-import {useState} from 'react';
 import {TextField} from '@mui/material';
 
 const EMAIL_REGEX =
@@ -6,8 +5,10 @@ const EMAIL_REGEX =
 
 export interface InputProps {
   errorText: string;
+  isValid: boolean;
   label: string;
   multiline?: boolean;
+  setIsValid: (isValid: boolean) => void;
   setValue: (value: string) => void;
   type: 'text' | 'email';
   value: string;
@@ -18,14 +19,14 @@ export const MULTI_LINE_CHARACTER_LIMIT = 1000;
 
 const Input = ({
   errorText,
+  isValid,
   label,
   multiline,
+  setIsValid,
   setValue,
   type,
   value,
 }: InputProps) => {
-  const [isValid, setIsValid] = useState(true);
-
   const maxCharacters = multiline
     ? MULTI_LINE_CHARACTER_LIMIT
     : SINGLE_LINE_CHARACTER_LIMIT;
