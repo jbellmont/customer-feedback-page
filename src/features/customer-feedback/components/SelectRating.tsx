@@ -1,8 +1,8 @@
 import {Rating} from '@mui/material';
 
 export interface SelectRatingProps {
-  setValue: (value: number | null) => void;
-  value: number | null;
+  setValue: (value: number) => void;
+  value: number;
 }
 
 const SelectRating = ({setValue, value}: SelectRatingProps) => {
@@ -12,7 +12,7 @@ const SelectRating = ({setValue, value}: SelectRatingProps) => {
       name="simple-controlled"
       value={value}
       onChange={(_, newValue) => {
-        setValue(newValue);
+        setValue(newValue as number);
       }}
     />
   );

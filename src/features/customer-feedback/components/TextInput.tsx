@@ -10,6 +10,7 @@ export interface TextInputProps {
   multiline?: boolean;
   setIsValid: (isValid: boolean) => void;
   setValue: (value: string) => void;
+  testId: string;
   type: 'text' | 'email';
   value: string;
 }
@@ -24,6 +25,7 @@ const TextInput = ({
   multiline,
   setIsValid,
   setValue,
+  testId,
   type,
   value,
 }: TextInputProps) => {
@@ -63,6 +65,7 @@ const TextInput = ({
       helperText={isValid ? null : errorText}
       id="outlined-basic"
       inputProps={{
+        'data-testid': testId,
         maxLength: maxCharacters,
       }}
       label={label}
