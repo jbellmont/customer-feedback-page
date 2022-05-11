@@ -4,7 +4,7 @@ import {useEffect, useState} from 'react';
 import Input from './Input';
 import SelectRating from './SelectRating';
 
-const Form = () => {
+const CustomerFeedbackForm = () => {
   const [nameValue, setNameValue] = useState('');
   const [isNameValid, setIsNameValid] = useState(true);
 
@@ -38,7 +38,7 @@ const Form = () => {
   ]);
 
   return (
-    <form>
+    <form name="customer-review">
       Form component
       <Input
         errorText={'Please provide a name'}
@@ -76,4 +76,4 @@ const Form = () => {
   );
 };
 
-export default Form;
+export default CustomerFeedbackForm;

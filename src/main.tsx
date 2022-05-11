@@ -9,7 +9,7 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
 import App from './features/app/App';
-import Form from './features/customer-review/components/Form';
+import CustomerFeedbackForm from './features/customer-review/components/CustomerFeedbackForm';
 import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -20,7 +20,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           Customer feedback page
         </Typography>
       </header>
-      <Form />
+      <CustomerFeedbackForm />
     </App>
   </React.StrictMode>
 );
