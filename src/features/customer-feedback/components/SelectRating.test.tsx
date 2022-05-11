@@ -7,7 +7,7 @@ const setValueMock = jest.fn();
 
 const baseProps: SelectRatingProps = {
   setValue: setValueMock,
-  value: null,
+  value: 0,
 };
 
 describe('SelectRating component', () => {

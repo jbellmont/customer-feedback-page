@@ -11,6 +11,7 @@ const baseProps: TextInputProps = {
   label: 'Test',
   setIsValid: setValueMock,
   setValue: setValueMock,
+  testId: 'test',
   type: 'text',
   value: 'John Smith',
 };
