@@ -1,8 +1,8 @@
 import {Button} from '@mui/material';
 import {useEffect, useState} from 'react';
 
-import Input from './Input';
 import SelectRating from './SelectRating';
+import TextInput from './TextInput';
 
 const CustomerFeedbackForm = () => {
   const [nameValue, setNameValue] = useState('');
@@ -19,14 +19,14 @@ const CustomerFeedbackForm = () => {
   const [isFormValid, setIsFormValid] = useState(false);
 
   useEffect(() => {
-    const inputsHaveValues = Boolean(
+    const TextInputsHaveValues = Boolean(
       nameValue && emailValue && ratingValue && commentValue
     );
-    const inputsAreValid = Boolean(
+    const TextInputsAreValid = Boolean(
       isNameValid && isEmailValid && isCommentValid
     );
 
-    setIsFormValid(inputsHaveValues && inputsAreValid);
+    setIsFormValid(TextInputsHaveValues && TextInputsAreValid);
   }, [
     nameValue,
     emailValue,
@@ -40,7 +40,7 @@ const CustomerFeedbackForm = () => {
   return (
     <form name="customer-review">
       Form component
-      <Input
+      <TextInput
         errorText={'Please provide a name'}
         isValid={isNameValid}
         label="Name"
@@ -49,7 +49,7 @@ const CustomerFeedbackForm = () => {
         type="text"
         value={nameValue}
       />
-      <Input
+      <TextInput
         errorText={'Please provide a properly formatted email address'}
         isValid={isEmailValid}
         label="Email"
@@ -59,7 +59,7 @@ const CustomerFeedbackForm = () => {
         value={emailValue}
       />
       <SelectRating setValue={setRatingValue} value={ratingValue} />
-      <Input
+      <TextInput
         errorText={'Please provide a comment'}
         isValid={isCommentValid}
         label="Comment"
