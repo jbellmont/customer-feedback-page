@@ -1,15 +1,15 @@
 import '@testing-library/jest-dom';
 import {fireEvent, render, screen} from '@testing-library/react';
 
-import Input, {
-  InputProps,
+import TextInput, {
   MULTI_LINE_CHARACTER_LIMIT,
   SINGLE_LINE_CHARACTER_LIMIT,
-} from './Input';
+  TextInputProps,
+} from './TextInput';
 
 const setValueMock = jest.fn();
 
-const baseProps: InputProps = {
+const baseProps: TextInputProps = {
   errorText: 'Error',
   isValid: true,
   label: 'Test',
@@ -21,14 +21,14 @@ const baseProps: InputProps = {
 
 describe('Input component', () => {
   it('should render', () => {
-    render(<Input {...baseProps} />);
+    render(<TextInput {...baseProps} />);
     const inputElement = screen.getByRole('textbox');
 
     expect(inputElement).toBeInTheDocument();
   });
 
   it('should render with label', () => {
-    render(<Input {...baseProps} label="Name" />);
+    render(<TextInput {...baseProps} label="Name" />);
     const inputElement = screen.getByLabelText(/^Name/i);
 
     expect(inputElement).toBeInTheDocument();
@@ -38,7 +38,7 @@ describe('Input component', () => {
     'should show error message when single-line max-character limit is ' +
       'exceeded',
     () => {
-      const {rerender} = render(<Input {...baseProps} value="" />);
+      const {rerender} = render(<TextInput {...baseProps} value="" />);
       const inputElement = screen.getByRole('textbox');
       fireEvent.change(inputElement, {
         target: {value: 'a'.repeat(SINGLE_LINE_CHARACTER_LIMIT + 1)},
@@ -49,7 +49,7 @@ describe('Input component', () => {
 
       // As isValid is handled by the parent Form component, we need to mock
       // when it sets the state to false.
-      rerender(<Input {...baseProps} isValid={false} />);
+      rerender(<TextInput {...baseProps} isValid={false} />);
       const errorElement = screen.getByText(/^Error/i);
 
       expect(errorElement).toBeInTheDocument();
@@ -60,7 +60,9 @@ describe('Input component', () => {
     'should show error message when multi-line max-character limit is ' +
       'exceeded',
     () => {
-      const {rerender} = render(<Input {...baseProps} multiline value="" />);
+      const {rerender} = render(
+        <TextInput {...baseProps} multiline value="" />
+      );
       const inputElement = screen.getByRole('textbox');
       fireEvent.change(inputElement, {
         target: {value: 'a'.repeat(MULTI_LINE_CHARACTER_LIMIT + 1)},
@@ -71,7 +73,7 @@ describe('Input component', () => {
 
       // As isValid is handled by the parent Form component, we need to mock
       // when it sets the state to false.
-      rerender(<Input {...baseProps} isValid={false} multiline />);
+      rerender(<TextInput {...baseProps} isValid={false} multiline />);
       const errorElement = screen.getByText(/^Error/i);
 
       expect(errorElement).toBeInTheDocument();
@@ -79,7 +81,7 @@ describe('Input component', () => {
   );
 
   it('should show error message when invalid email is provided', () => {
-    const {rerender} = render(<Input {...baseProps} type="email" />);
+    const {rerender} = render(<TextInput {...baseProps} type="email" />);
     const inputElement = screen.getByRole('textbox');
     fireEvent.change(inputElement, {
       target: {value: 'invalid.o'},
@@ -90,7 +92,7 @@ describe('Input component', () => {
 
     // As isValid is handled by the parent Form component, we need to mock
     // when it sets the state to false.
-    rerender(<Input {...baseProps} isValid={false} type="email" />);
+    rerender(<TextInput {...baseProps} isValid={false} type="email" />);
     const errorElement = screen.getByText(/^Error/i);
 
     expect(errorElement).toBeInTheDocument();

@@ -3,7 +3,7 @@ import {TextField} from '@mui/material';
 const EMAIL_REGEX =
   /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-export interface InputProps {
+export interface TextInputProps {
   errorText: string;
   isValid: boolean;
   label: string;
@@ -17,7 +17,7 @@ export interface InputProps {
 export const SINGLE_LINE_CHARACTER_LIMIT = 255;
 export const MULTI_LINE_CHARACTER_LIMIT = 1000;
 
-const Input = ({
+const TextInput = ({
   errorText,
   isValid,
   label,
@@ -26,7 +26,7 @@ const Input = ({
   setValue,
   type,
   value,
-}: InputProps) => {
+}: TextInputProps) => {
   const maxCharacters = multiline
     ? MULTI_LINE_CHARACTER_LIMIT
     : SINGLE_LINE_CHARACTER_LIMIT;
@@ -77,4 +77,4 @@ const Input = ({
   );
 };
 
-export default Input;
+export default TextInput;
