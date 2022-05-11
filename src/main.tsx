@@ -9,7 +9,7 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
 import App from './features/app/App';
-import CustomerFeedbackForm from './features/customer-review/components/CustomerFeedbackForm';
+import CustomerFeedbackForm from './features/customer-feedback/components/CustomerFeedbackForm';
 import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
