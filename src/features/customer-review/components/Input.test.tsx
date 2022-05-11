@@ -11,7 +11,9 @@ const setValueMock = jest.fn();
 
 const baseProps: InputProps = {
   errorText: 'Error',
+  isValid: true,
   label: 'Test',
+  setIsValid: setValueMock,
   setValue: setValueMock,
   type: 'text',
   value: 'John Smith',
@@ -36,11 +38,18 @@ describe('Input component', () => {
     'should show error message when single-line max-character limit is ' +
       'exceeded',
     () => {
-      render(<Input {...baseProps} value="" />);
+      const {rerender} = render(<Input {...baseProps} value="" />);
       const inputElement = screen.getByRole('textbox');
       fireEvent.change(inputElement, {
         target: {value: 'a'.repeat(SINGLE_LINE_CHARACTER_LIMIT + 1)},
       });
+      const setValueSpy = jest.spyOn(baseProps, 'setIsValid');
+
+      expect(setValueSpy).toBeCalledWith(false);
+
+      // As isValid is handled by the parent Form component, we need to mock
+      // when it sets the state to false.
+      rerender(<Input {...baseProps} isValid={false} />);
       const errorElement = screen.getByText(/^Error/i);
 
       expect(errorElement).toBeInTheDocument();
@@ -51,11 +60,18 @@ describe('Input component', () => {
     'should show error message when multi-line max-character limit is ' +
       'exceeded',
     () => {
-      render(<Input {...baseProps} multiline value="" />);
+      const {rerender} = render(<Input {...baseProps} multiline value="" />);
       const inputElement = screen.getByRole('textbox');
       fireEvent.change(inputElement, {
         target: {value: 'a'.repeat(MULTI_LINE_CHARACTER_LIMIT + 1)},
       });
+
+      const setValueSpy = jest.spyOn(baseProps, 'setIsValid');
+      expect(setValueSpy).toBeCalledWith(false);
+
+      // As isValid is handled by the parent Form component, we need to mock
+      // when it sets the state to false.
+      rerender(<Input {...baseProps} isValid={false} multiline />);
       const errorElement = screen.getByText(/^Error/i);
 
       expect(errorElement).toBeInTheDocument();
@@ -63,11 +79,18 @@ describe('Input component', () => {
   );
 
   it('should show error message when invalid email is provided', () => {
-    render(<Input {...baseProps} type="email" />);
+    const {rerender} = render(<Input {...baseProps} type="email" />);
     const inputElement = screen.getByRole('textbox');
     fireEvent.change(inputElement, {
       target: {value: 'invalid.o'},
     });
+
+    const setValueSpy = jest.spyOn(baseProps, 'setIsValid');
+    expect(setValueSpy).toBeCalledWith(false);
+
+    // As isValid is handled by the parent Form component, we need to mock
+    // when it sets the state to false.
+    rerender(<Input {...baseProps} isValid={false} type="email" />);
     const errorElement = screen.getByText(/^Error/i);
 
     expect(errorElement).toBeInTheDocument();
