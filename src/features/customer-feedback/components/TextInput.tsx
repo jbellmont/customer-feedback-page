@@ -66,6 +66,7 @@ const TextInput = ({
         maxLength: maxCharacters,
       }}
       label={label}
+      name={label}
       multiline={multiline}
       onChange={handleOnChange}
       required
