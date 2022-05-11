@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom';
-import {fireEvent, render, screen} from '@testing-library/react';
+import {render, screen} from '@testing-library/react';
 
 import SelectRating, {SelectRatingProps} from './SelectRating';
 
@@ -19,15 +19,17 @@ describe('SelectRating component', () => {
     expect(ratingElements).toHaveLength(6);
   });
 
-  it('should set its value based on the star clicked', () => {
-    render(<SelectRating {...baseProps} />);
-    const ratingElements = screen.getAllByRole('radio');
+  it('should check a star based on value', () => {
+    render(<SelectRating {...baseProps} value={3} />);
 
-    // Click the '2-star' radio button.
-    fireEvent.click(ratingElements[1]);
+    const thirdStarButton = screen.getByRole('radio', {
+      name: /3 stars/i,
+    });
+    const fourthStarButton = screen.getByRole('radio', {
+      name: /4 stars/i,
+    });
 
-    expect(setValueMock).toHaveBeenCalledWith(2);
+    expect(thirdStarButton).toBeChecked();
+    expect(fourthStarButton).not.toBeChecked();
   });
-
-  // TODO(jackbellmont): Handle error message when working on Form validation.
 });
