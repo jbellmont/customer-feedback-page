@@ -41,7 +41,9 @@ describe('ReviewsList component', () => {
     expect(getByText(/Perry McGee/i)).toBeInTheDocument();
     expect(getByText(/Molto bene/i)).toBeInTheDocument();
     expect(getByText(/PM/)).toBeInTheDocument();
-    expect(getByText(/01\/06\/2022/)).toBeInTheDocument();
+    // As date uses toLocalString(), we have to test UK and US date formats,
+    // thanks to CI / CD tests running on non UK server.
+    expect(getByText(/(01\/06\/2022)|(6\/1\/2022)/)).toBeInTheDocument();
     expect(getByLabelText(/5 Stars/i)).toBeInTheDocument();
   });
 
