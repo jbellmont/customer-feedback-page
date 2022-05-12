@@ -36,10 +36,12 @@ const App = () => {
       },
     ];
 
-    return reviews.reduce((previous, current) => {
-      previous[current.rating - 1].ratings++;
-      return previous;
-    }, ratingsData);
+    return reviews
+      .reduce((previous, current) => {
+        previous[current.rating - 1].ratings++;
+        return previous;
+      }, ratingsData)
+      .reverse();
   };
 
   const ratingsChartData = generateRatingsChartData(reviews);
