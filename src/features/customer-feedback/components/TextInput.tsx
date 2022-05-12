@@ -63,7 +63,7 @@ const TextInput = ({
     <TextField
       error={!isValid}
       fullWidth
-      id="outlined-basic"
+      id={label}
       inputProps={{
         'data-testid': testId,
         maxLength: maxCharacters,
