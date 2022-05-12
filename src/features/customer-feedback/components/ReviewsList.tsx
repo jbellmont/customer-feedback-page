@@ -1,3 +1,16 @@
+import {
+  List,
+  ListItem,
+  ListItemAvatar,
+  Avatar,
+  ListItemText,
+  Typography,
+  Divider,
+  Rating,
+  Box,
+  Stack,
+} from '@mui/material';
+
 import {Review} from '../types/models';
 
 interface ReviewsListProps {
@@ -22,15 +35,41 @@ const ReviewsList = ({reviews}: ReviewsListProps) => {
   // TODO(jackbellmont): Handle JB avatar.
   // TODO(jackbellmont): Format date nicely, e.g. Tues 15th March.
   return (
-    <ul>
+    <List sx={{width: '100%', maxWidth: 600}}>
       {reviewsToDisplay.map((review: Review) => {
         return (
-          <li key={review.id}>
-            {review.name} - {review.date.toLocaleDateString()}
-          </li>
+          <>
+            <ListItem alignItems="flex-start" key={review.id}>
+              <ListItemAvatar>
+                <Avatar>JB</Avatar>
+              </ListItemAvatar>
+              <ListItemText
+                primary={
+                  <Rating name="read-only" readOnly value={review.rating} />
+                }
+                secondary={
+                  <Stack>
+                    <Box>
+                      <Typography
+                        sx={{display: 'inline'}}
+                        component="span"
+                        variant="body2"
+                        color="text.primary"
+                      >
+                        {review.name}
+                      </Typography>
+                      {` - ${review.date.toLocaleDateString()}`}
+                    </Box>
+                    <Box>{review.comment}</Box>
+                  </Stack>
+                }
+              />
+            </ListItem>
+            <Divider />
+          </>
         );
       })}
-    </ul>
+    </List>
   );
 };
 
