@@ -36,8 +36,6 @@ const ReviewsList = ({reviews}: ReviewsListProps) => {
 
   const reviewsToDisplay: Review[] = transformReviews(reviews);
 
-  // TODO(jackbellmont): Handle no reviews (e.g. 'No reviews submitted yet').
-  // TODO(jackbellmont): Format date nicely, e.g. Tues 15th March.
   return (
     <List sx={{width: '100%', maxWidth: 600}}>
       {reviewsToDisplay.map((review: Review) => {
