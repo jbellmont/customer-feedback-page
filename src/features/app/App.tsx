@@ -1,12 +1,16 @@
-import {ReactNode} from 'react';
-import {Container} from '@mui/material';
+import {Container, Typography} from '@mui/material';
 
-interface Props {
-  children: ReactNode;
-}
+import CustomerFeedbackForm from '../customer-feedback/components/CustomerFeedbackForm';
 
-const App = ({children}: Props) => (
-  <Container maxWidth="lg">{children}</Container>
+const App = () => (
+  <Container maxWidth="lg">
+    <header>
+      <Typography component="h1" sx={{fontWeight: 500}} variant="h3">
+        Customer feedback page
+      </Typography>
+    </header>
+    <CustomerFeedbackForm />
+  </Container>
 );
 
 export default App;
