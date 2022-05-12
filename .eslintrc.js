@@ -19,6 +19,8 @@ module.exports = {
         'plugin:jest-dom/recommended',
         'plugin:jsx-a11y/recommended',
         'plugin:testing-library/react',
+        'plugin:@typescript-eslint/eslint-recommended',
+        'plugin:@typescript-eslint/recommended',
       ],
     },
   ],
