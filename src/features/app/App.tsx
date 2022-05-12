@@ -93,7 +93,7 @@ const App = () => {
           <Grid item md={6} sx={{marginBottom: 4, width: '100%'}}>
             <CustomerFeedbackForm fetchReviews={fetchReviews} />
           </Grid>
-          <Grid item md={6}>
+          <Grid item md={6} sx={{width: '100%'}}>
             <RatingsChart chartData={ratingsChartData} />
           </Grid>
         </Grid>
