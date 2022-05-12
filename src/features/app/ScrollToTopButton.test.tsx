@@ -6,7 +6,9 @@ import ScrollToTopButton from './ScrollToTopButton';
 describe('ScrollToTopButton component', () => {
   it('should render with text', () => {
     render(<ScrollToTopButton />);
-    const scrollToButtonElement = screen.getByLabelText(/scroll to top/i);
+    const scrollToButtonElement = screen.getByRole('button', {
+      name: /scroll to top/i,
+    });
 
     expect(scrollToButtonElement).toBeInTheDocument();
   });
