@@ -1,4 +1,5 @@
 import {Container, Typography} from '@mui/material';
+import {useEffect, useState} from 'react';
 
 import CustomerFeedbackForm from '../customer-feedback/components/CustomerFeedbackForm';
 import {getReviews} from '../customer-feedback/api/reviews';
@@ -10,7 +11,10 @@ import RatingsChart, {
 } from '../customer-feedback/components/RatingsChart';
 
 const App = () => {
-  const reviews: Review[] = getReviews();
+  const [reviews, setReviews] = useState<Review[]>([]);
+  const [ratingsChartData, setRatingsChartData] = useState<RatingsChartData[]>(
+    []
+  );
 
   const generateRatingsChartData = (reviews: Review[]): RatingsChartData[] => {
     const ratingsData: RatingsChartData[] = [
@@ -44,7 +48,17 @@ const App = () => {
       .reverse();
   };
 
-  const ratingsChartData = generateRatingsChartData(reviews);
+  const fetchReviews = () => {
+    const freshReviews: Review[] = getReviews();
+    setReviews(freshReviews);
+
+    const freshRatingsChartData = generateRatingsChartData(freshReviews);
+    setRatingsChartData(freshRatingsChartData);
+  };
+
+  useEffect(() => {
+    fetchReviews();
+  }, []);
 
   return (
     <Container maxWidth="lg">
@@ -53,7 +67,7 @@ const App = () => {
           Customer feedback page
         </Typography>
       </header>
-      <CustomerFeedbackForm />
+      <CustomerFeedbackForm fetchReviews={fetchReviews} />
       <RatingsChart chartData={ratingsChartData} />
       {/* TODO(jackbellmont): Handle review list of 0. "No reviews" */}
       <ReviewsList reviews={reviews} />
