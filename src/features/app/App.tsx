@@ -89,7 +89,7 @@ const App = () => {
           Please fill in the form below to submit a review
         </Typography>
 
-        <Grid container spacing={2}>
+        <Grid container spacing={2} sx={{marginBottom: 8, minHeight: 450}}>
           <Grid item md={6}>
             <CustomerFeedbackForm fetchReviews={fetchReviews} />
           </Grid>

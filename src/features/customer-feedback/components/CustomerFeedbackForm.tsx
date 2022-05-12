@@ -1,4 +1,4 @@
-import {Button} from '@mui/material';
+import {Button, Stack} from '@mui/material';
 import {SyntheticEvent, useEffect, useState} from 'react';
 import {createReview, ReviewPayload} from '../api/reviews';
 
@@ -82,39 +82,47 @@ const CustomerFeedbackForm = ({fetchReviews}: CustomerFeedbackFormProps) => {
       onSubmit={submitReview}
       name="customer-feedback"
     >
-      Form component
-      <TextInput
-        errorText={'Please provide a name'}
-        isValid={isNameValid}
-        label="Name"
-        setIsValid={setIsNameValid}
-        setValue={setNameValue}
-        testId={NAME_TEXT_INPUT_TEST_ID}
-        type="text"
-        value={nameValue}
-      />
-      <TextInput
-        errorText={'Please provide a properly formatted email address'}
-        isValid={isEmailValid}
-        label="Email"
-        setIsValid={setIsEmailValid}
-        setValue={setEmailValue}
-        testId={EMAIL_TEXT_INPUT_TEST_ID}
-        type="email"
-        value={emailValue}
-      />
-      <SelectRating setValue={setRatingValue} value={ratingValue} />
-      <TextInput
-        errorText={'Please provide a comment'}
-        isValid={isCommentValid}
-        label="Comment"
-        setIsValid={setIsCommentValid}
-        multiline
-        setValue={setCommentValue}
-        testId={COMMENT_TEXT_INPUT_TEST_ID}
-        type="text"
-        value={commentValue}
-      />
+      <Stack spacing={2}>
+        <Stack
+          direction="row"
+          spacing={2}
+          sx={{alignItems: 'center', height: 50}}
+        >
+          <label htmlFor="rating">Rating</label>
+          <SelectRating setValue={setRatingValue} value={ratingValue} />
+        </Stack>
+        <TextInput
+          errorText={'Please provide a name'}
+          isValid={isNameValid}
+          label="Name"
+          setIsValid={setIsNameValid}
+          setValue={setNameValue}
+          testId={NAME_TEXT_INPUT_TEST_ID}
+          type="text"
+          value={nameValue}
+        />
+        <TextInput
+          errorText={'Please provide a properly formatted email address'}
+          isValid={isEmailValid}
+          label="Email"
+          setIsValid={setIsEmailValid}
+          setValue={setEmailValue}
+          testId={EMAIL_TEXT_INPUT_TEST_ID}
+          type="email"
+          value={emailValue}
+        />
+        <TextInput
+          errorText={'Please provide a comment'}
+          isValid={isCommentValid}
+          label="Comment"
+          setIsValid={setIsCommentValid}
+          multiline
+          setValue={setCommentValue}
+          testId={COMMENT_TEXT_INPUT_TEST_ID}
+          type="text"
+          value={commentValue}
+        />
+      </Stack>
       <Button disabled={!isFormValid} type="submit" variant="contained">
         Submit review
       </Button>
