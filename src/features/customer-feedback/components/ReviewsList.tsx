@@ -18,6 +18,12 @@ interface ReviewsListProps {
 }
 
 const ReviewsList = ({reviews}: ReviewsListProps) => {
+  const createAvatarNameInitials = (name: string): string => {
+    return name.split(' ').reduce((previous, current) => {
+      return previous + current[0].toUpperCase();
+    }, '');
+  };
+
   const sortReviewsByLatestDate = (reviews: Review[]): Review[] => {
     return [...reviews].sort((a, b) => {
       return b.date.getTime() - a.date.getTime();
@@ -41,7 +47,7 @@ const ReviewsList = ({reviews}: ReviewsListProps) => {
           <>
             <ListItem alignItems="flex-start" key={review.id}>
               <ListItemAvatar>
-                <Avatar>JB</Avatar>
+                <Avatar>{createAvatarNameInitials(review.name)}</Avatar>
               </ListItemAvatar>
               <ListItemText
                 primary={
