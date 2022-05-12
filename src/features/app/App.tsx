@@ -9,6 +9,7 @@ import RatingsChart, {
   RatingsChartData,
   RatingsLabel,
 } from '../customer-feedback/components/RatingsChart';
+import Header from './Header';
 
 const App = () => {
   const [reviews, setReviews] = useState<Review[]>([]);
@@ -61,17 +62,20 @@ const App = () => {
   }, []);
 
   return (
-    <Container maxWidth="lg">
-      <header>
-        <Typography component="h1" sx={{fontWeight: 500}} variant="h3">
-          Customer feedback page
-        </Typography>
-      </header>
-      <CustomerFeedbackForm fetchReviews={fetchReviews} />
-      <RatingsChart chartData={ratingsChartData} />
-      {/* TODO(jackbellmont): Handle review list of 0. "No reviews" */}
-      <ReviewsList reviews={reviews} />
-    </Container>
+    <>
+      <Header />
+      <Container maxWidth="lg">
+        <header>
+          <Typography component="h1" sx={{fontWeight: 500}} variant="h3">
+            Customer feedback page
+          </Typography>
+        </header>
+        <CustomerFeedbackForm fetchReviews={fetchReviews} />
+        <RatingsChart chartData={ratingsChartData} />
+        {/* TODO(jackbellmont): Handle review list of 0. "No reviews" */}
+        <ReviewsList reviews={reviews} />
+      </Container>
+    </>
   );
 };
 
