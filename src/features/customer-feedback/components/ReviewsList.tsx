@@ -10,6 +10,8 @@ import {
   Stack,
 } from '@mui/material';
 
+import {googleLightGrey} from '../../../shared/styles/colours';
+
 import {Review} from '../types/models';
 
 export interface ReviewsListProps {
@@ -43,7 +45,7 @@ const ReviewsList = ({reviews}: ReviewsListProps) => {
           <ListItem
             alignItems="flex-start"
             key={review.id}
-            sx={{borderBottom: 1, borderColor: '#dbdbdb'}}
+            sx={{borderBottom: 1, borderColor: googleLightGrey}}
           >
             <ListItemAvatar>
               <Avatar>{createAvatarNameInitials(review.name)}</Avatar>
