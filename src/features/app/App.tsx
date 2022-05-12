@@ -1,4 +1,4 @@
-import {Container, Typography} from '@mui/material';
+import {Container, Grid, Typography} from '@mui/material';
 import RateReviewIcon from '@mui/icons-material/RateReview';
 import {useEffect, useState} from 'react';
 
@@ -10,6 +10,7 @@ import RatingsChart, {
   RatingsChartData,
   RatingsLabel,
 } from '../customer-feedback/components/RatingsChart';
+
 import Header from './Header';
 
 const App = () => {
@@ -86,8 +87,14 @@ const App = () => {
         >
           Please fill in the form below to submit a review
         </Typography>
-        <CustomerFeedbackForm fetchReviews={fetchReviews} />
-        <RatingsChart chartData={ratingsChartData} />
+        <Grid container spacing={2}>
+          <Grid item md={6}>
+            <CustomerFeedbackForm fetchReviews={fetchReviews} />
+          </Grid>
+          <Grid item md={6}>
+            <RatingsChart chartData={ratingsChartData} />
+          </Grid>
+        </Grid>
         {/* TODO(jackbellmont): Handle review list of 0. "No reviews" */}
         <ReviewsList reviews={reviews} />
       </Container>
