@@ -96,6 +96,9 @@ const App = () => {
           </Grid>
         </Grid>
         {/* TODO(jackbellmont): Handle review list of 0. "No reviews" */}
+        <Typography component="h3" sx={{fontWeight: 500}} variant="h6">
+          Latest comments
+        </Typography>
         <ReviewsList reviews={reviews} />
       </Container>
     </>
