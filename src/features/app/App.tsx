@@ -12,6 +12,7 @@ import RatingsChart, {
 } from '../customer-feedback/components/RatingsChart';
 
 import Header from './Header';
+import ScrollToTopButton from './ScrollToTopButton';
 
 const App = () => {
   const [reviews, setReviews] = useState<Review[]>([]);
@@ -87,6 +88,7 @@ const App = () => {
         >
           Please fill in the form below to submit a review
         </Typography>
+
         <Grid container spacing={2}>
           <Grid item md={6}>
             <CustomerFeedbackForm fetchReviews={fetchReviews} />
@@ -95,12 +97,13 @@ const App = () => {
             <RatingsChart chartData={ratingsChartData} />
           </Grid>
         </Grid>
-        {/* TODO(jackbellmont): Handle review list of 0. "No reviews" */}
+
         <Typography component="h3" sx={{fontWeight: 500}} variant="h6">
           Latest comments
         </Typography>
         <ReviewsList reviews={reviews} />
       </Container>
+      <ScrollToTopButton />
     </>
   );
 };
