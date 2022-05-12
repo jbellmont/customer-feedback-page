@@ -1,4 +1,12 @@
-import {BarChart, XAxis, YAxis, Tooltip, Bar, Legend} from 'recharts';
+import {
+  BarChart,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Bar,
+  Legend,
+  ResponsiveContainer,
+} from 'recharts';
 
 import {
   googleLightGrey,
@@ -26,26 +34,29 @@ export const RATINGS_CHART_TEST_ID = 'ratings-chart-test-id';
 
 const RatingsChart = ({chartData}: RatingsChartProps) => {
   return (
-    <div data-testid={RATINGS_CHART_TEST_ID}>
-      <BarChart
-        data={chartData}
-        height={388}
-        layout="vertical"
-        margin={{top: 5, right: 30, left: 20, bottom: 5}}
-        width={600}
-      >
-        <XAxis
-          allowDecimals={false}
-          tick={{fontFamily: 'roboto'}}
-          type="number"
-        />
-        <YAxis dataKey="name" tick={{fontFamily: 'roboto'}} type="category" />
-        <Tooltip cursor={{fill: googleLightGrey, strokeWidth: 2}} />
-        <Bar barSize={40} dataKey="ratings" fill={ratingStarYellow} />
-        <Legend />
-      </BarChart>
+    <div className="graph-container" data-testid={RATINGS_CHART_TEST_ID}>
+      <ResponsiveContainer width={'100%'} height={388}>
+        <BarChart
+          data={chartData}
+          layout="vertical"
+          margin={{top: 5, right: 30, left: 20, bottom: 5}}
+        >
+          <XAxis
+            allowDecimals={false}
+            tick={{fontFamily: 'roboto'}}
+            type="number"
+          />
+          <YAxis dataKey="name" tick={{fontFamily: 'roboto'}} type="category" />
+          <Tooltip cursor={{fill: googleLightGrey, strokeWidth: 2}} />
+          <Bar barSize={40} dataKey="ratings" fill={ratingStarYellow} />
+          <Legend />
+        </BarChart>
+      </ResponsiveContainer>
     </div>
   );
 };
 
 export default RatingsChart;
+
+// 600 width
+// 388 height
