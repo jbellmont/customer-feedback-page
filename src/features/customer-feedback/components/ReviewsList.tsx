@@ -12,7 +12,7 @@ import {
 
 import {Review} from '../types/models';
 
-interface ReviewsListProps {
+export interface ReviewsListProps {
   reviews: Review[];
 }
 
