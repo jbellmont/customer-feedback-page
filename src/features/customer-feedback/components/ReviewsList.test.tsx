@@ -63,4 +63,11 @@ describe('ReviewsList component', () => {
     expect(getByTextNewest(/Perry McGee/i)).toBeInTheDocument();
     expect(getByTextOldest(/John Smith/i)).toBeInTheDocument();
   });
+
+  it('should show message if no reviews to display', () => {
+    render(<ReviewsList reviews={[]} />);
+    const noReviewsMessage = screen.getByText(/no reviews/i);
+
+    expect(noReviewsMessage).toBeInTheDocument();
+  });
 });
