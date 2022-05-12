@@ -5,7 +5,6 @@ import {
   Avatar,
   ListItemText,
   Typography,
-  Divider,
   Rating,
   Box,
   Stack,
@@ -38,41 +37,38 @@ const ReviewsList = ({reviews}: ReviewsListProps) => {
   const reviewsToDisplay: Review[] = transformReviews(reviews);
 
   // TODO(jackbellmont): Handle no reviews (e.g. 'No reviews submitted yet').
-  // TODO(jackbellmont): Handle JB avatar.
   // TODO(jackbellmont): Format date nicely, e.g. Tues 15th March.
   return (
     <List sx={{width: '100%', maxWidth: 600}}>
       {reviewsToDisplay.map((review: Review) => {
         return (
-          <>
-            <ListItem alignItems="flex-start" key={review.id}>
-              <ListItemAvatar>
-                <Avatar>{createAvatarNameInitials(review.name)}</Avatar>
-              </ListItemAvatar>
-              <ListItemText
-                primary={
+          <ListItem
+            alignItems="flex-start"
+            key={review.id}
+            sx={{borderBottom: 1, borderColor: '#dbdbdb'}}
+          >
+            <ListItemAvatar>
+              <Avatar>{createAvatarNameInitials(review.name)}</Avatar>
+            </ListItemAvatar>
+            <ListItemText
+              primary={
+                <Stack>
                   <Rating name="read-only" readOnly value={review.rating} />
-                }
-                secondary={
-                  <Stack>
-                    <Box>
-                      <Typography
-                        sx={{display: 'inline'}}
-                        component="span"
-                        variant="body2"
-                        color="text.primary"
-                      >
-                        {review.name}
-                      </Typography>
-                      {` - ${review.date.toLocaleDateString()}`}
-                    </Box>
-                    <Box>{review.comment}</Box>
-                  </Stack>
-                }
-              />
-            </ListItem>
-            <Divider />
-          </>
+                  <Box>
+                    <Typography
+                      sx={{display: 'inline'}}
+                      component="span"
+                      variant="body2"
+                      color="text.primary"
+                    >
+                      {review.name} - {review.date.toLocaleDateString()}
+                    </Typography>
+                  </Box>
+                </Stack>
+              }
+              secondary={review.comment}
+            />
+          </ListItem>
         );
       })}
     </List>
