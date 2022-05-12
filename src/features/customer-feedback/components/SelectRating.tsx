@@ -9,7 +9,7 @@ const SelectRating = ({setValue, value}: SelectRatingProps) => {
   // TODO(jackbellmont): Handle error message when working on Form validation.
   return (
     <Rating
-      name="simple-controlled"
+      name="rating"
       value={value}
       onChange={(_, newValue) => {
         setValue(newValue as number);

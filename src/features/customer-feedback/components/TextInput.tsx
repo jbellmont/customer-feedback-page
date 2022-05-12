@@ -62,18 +62,21 @@ const TextInput = ({
   return (
     <TextField
       error={!isValid}
-      helperText={isValid ? null : errorText}
+      fullWidth
       id="outlined-basic"
       inputProps={{
         'data-testid': testId,
         maxLength: maxCharacters,
       }}
+      helperText={isValid ? null : errorText}
       label={label}
       name={label}
       multiline={multiline}
       onChange={handleOnChange}
       required
+      maxRows={3}
       minRows={multiline ? 3 : 1}
+      sx={{height: multiline ? 140 : 75}}
       type={type}
       value={value}
       variant="outlined"
