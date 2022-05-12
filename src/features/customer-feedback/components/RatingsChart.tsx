@@ -29,7 +29,7 @@ const RatingsChart = ({chartData}: RatingsChartProps) => {
     <div data-testid={RATINGS_CHART_TEST_ID}>
       <BarChart
         data={chartData}
-        height={300}
+        height={388}
         layout="vertical"
         margin={{top: 5, right: 30, left: 20, bottom: 5}}
         width={600}
