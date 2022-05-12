@@ -10,7 +10,7 @@ import {
   Stack,
 } from '@mui/material';
 
-import {googleLightGrey} from '../../../shared/styles/colours';
+import {avatarDarkGrey, googleLightGrey} from '../../../shared/styles/colours';
 
 import {Review} from '../types/models';
 
@@ -48,7 +48,9 @@ const ReviewsList = ({reviews}: ReviewsListProps) => {
             sx={{borderBottom: 1, borderColor: googleLightGrey}}
           >
             <ListItemAvatar>
-              <Avatar>{createAvatarNameInitials(review.name)}</Avatar>
+              <Avatar sx={{background: avatarDarkGrey}}>
+                {createAvatarNameInitials(review.name)}
+              </Avatar>
             </ListItemAvatar>
             <ListItemText
               primary={
