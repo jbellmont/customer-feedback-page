@@ -10,7 +10,11 @@ export const NAME_TEXT_INPUT_TEST_ID = 'name-test-id';
 export const EMAIL_TEXT_INPUT_TEST_ID = 'email-test-id';
 export const COMMENT_TEXT_INPUT_TEST_ID = 'comment-test-id';
 
-const CustomerFeedbackForm = () => {
+export interface CustomerFeedbackFormProps {
+  fetchReviews: () => void;
+}
+
+const CustomerFeedbackForm = ({fetchReviews}: CustomerFeedbackFormProps) => {
   const [nameValue, setNameValue] = useState('');
   const [isNameValid, setIsNameValid] = useState(true);
 
@@ -65,6 +69,7 @@ const CustomerFeedbackForm = () => {
       createReview(newReviewPayload);
       setShowSuccessMessage(true);
       resetFormValues();
+      fetchReviews();
     } catch (error) {
       // TODO(jackbellmont): Handle error message on error.
       console.error(error);
@@ -74,7 +79,7 @@ const CustomerFeedbackForm = () => {
   return (
     <form
       data-testid={CUSTOMER_FEEDBACK_FORM_TEST_ID}
-      onSubmit={(event) => submitReview(event)}
+      onSubmit={submitReview}
       name="customer-feedback"
     >
       Form component

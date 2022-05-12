@@ -7,14 +7,19 @@ import userEvent from '@testing-library/user-event';
 
 import CustomerFeedbackForm, {
   COMMENT_TEXT_INPUT_TEST_ID,
+  CustomerFeedbackFormProps,
   CUSTOMER_FEEDBACK_FORM_TEST_ID,
   EMAIL_TEXT_INPUT_TEST_ID,
   NAME_TEXT_INPUT_TEST_ID,
 } from './CustomerFeedbackForm';
 
+const baseProps: CustomerFeedbackFormProps = {
+  fetchReviews: jest.fn(),
+};
+
 describe('CustomerFeedbackForm component', () => {
   it('should render', () => {
-    render(<CustomerFeedbackForm />);
+    render(<CustomerFeedbackForm {...baseProps} />);
     const formElement = screen.getByTestId(CUSTOMER_FEEDBACK_FORM_TEST_ID);
 
     expect(formElement).toBeInTheDocument();
@@ -24,7 +29,7 @@ describe('CustomerFeedbackForm component', () => {
   // I could not test user interaction with it.
   it('should display a success message on successful form submission', async () => {
     const user = userEvent.setup();
-    render(<CustomerFeedbackForm />);
+    render(<CustomerFeedbackForm {...baseProps} />);
 
     const nameTextInput = screen.getByTestId(NAME_TEXT_INPUT_TEST_ID);
     await user.type(nameTextInput, 'John Smith');
@@ -47,7 +52,7 @@ describe('CustomerFeedbackForm component', () => {
 
   it('should have disabled submit button when form is not valid', async () => {
     const user = userEvent.setup();
-    render(<CustomerFeedbackForm />);
+    render(<CustomerFeedbackForm {...baseProps} />);
 
     const emailTextInput = screen.getByTestId(EMAIL_TEXT_INPUT_TEST_ID);
     await user.type(emailTextInput, 'invalid.com');
