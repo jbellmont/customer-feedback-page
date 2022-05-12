@@ -18,28 +18,32 @@ export interface RatingsChartData {
   ratings: number;
 }
 
-interface RatingsChartProps {
+export interface RatingsChartProps {
   chartData: RatingsChartData[];
 }
 
+export const RATINGS_CHART_TEST_ID = 'ratings-chart-test-id';
+
 const RatingsChart = ({chartData}: RatingsChartProps) => {
   return (
-    <BarChart
-      width={600}
-      height={300}
-      data={chartData}
-      layout="vertical"
-      margin={{top: 5, right: 30, left: 20, bottom: 5}}
-    >
-      <XAxis
-        allowDecimals={false}
-        tick={{fontFamily: 'roboto'}}
-        type="number"
-      />
-      <YAxis dataKey="name" tick={{fontFamily: 'roboto'}} type="category" />
-      <Tooltip cursor={{fill: googleLightGrey, strokeWidth: 2}} />
-      <Bar dataKey="ratings" fill={ratingStarYellow} />
-    </BarChart>
+    <div data-testid={RATINGS_CHART_TEST_ID}>
+      <BarChart
+        data={chartData}
+        height={300}
+        layout="vertical"
+        margin={{top: 5, right: 30, left: 20, bottom: 5}}
+        width={600}
+      >
+        <XAxis
+          allowDecimals={false}
+          tick={{fontFamily: 'roboto'}}
+          type="number"
+        />
+        <YAxis dataKey="name" tick={{fontFamily: 'roboto'}} type="category" />
+        <Tooltip cursor={{fill: googleLightGrey, strokeWidth: 2}} />
+        <Bar dataKey="ratings" fill={ratingStarYellow} />
+      </BarChart>
+    </div>
   );
 };
 
