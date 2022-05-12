@@ -1,4 +1,4 @@
-import {BarChart, XAxis, YAxis, Tooltip, Bar} from 'recharts';
+import {BarChart, XAxis, YAxis, Tooltip, Bar, Legend} from 'recharts';
 
 import {
   googleLightGrey,
@@ -41,7 +41,8 @@ const RatingsChart = ({chartData}: RatingsChartProps) => {
         />
         <YAxis dataKey="name" tick={{fontFamily: 'roboto'}} type="category" />
         <Tooltip cursor={{fill: googleLightGrey, strokeWidth: 2}} />
-        <Bar dataKey="ratings" fill={ratingStarYellow} />
+        <Bar barSize={40} dataKey="ratings" fill={ratingStarYellow} />
+        <Legend />
       </BarChart>
     </div>
   );
