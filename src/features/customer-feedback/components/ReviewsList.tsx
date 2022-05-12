@@ -38,8 +38,8 @@ const ReviewsList = ({reviews}: ReviewsListProps) => {
 
   const reviewsToDisplay: Review[] = transformReviews(reviews);
 
-  return (
-    <List sx={{width: '100%', maxWidth: 600}}>
+  return reviewsToDisplay.length ? (
+    <List sx={{width: '100%'}}>
       {reviewsToDisplay.map((review: Review) => {
         return (
           <ListItem
@@ -66,12 +66,18 @@ const ReviewsList = ({reviews}: ReviewsListProps) => {
                   </Box>
                 </Stack>
               }
-              secondary={review.comment}
+              secondary={
+                <span style={{display: 'inline-block', maxWidth: '750px'}}>
+                  {review.comment}
+                </span>
+              }
             />
           </ListItem>
         );
       })}
     </List>
+  ) : (
+    <p>No reviews</p>
   );
 };
 
