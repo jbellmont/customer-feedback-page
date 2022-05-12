@@ -1,4 +1,5 @@
 import {Container, Typography} from '@mui/material';
+import RateReviewIcon from '@mui/icons-material/RateReview';
 import {useEffect, useState} from 'react';
 
 import CustomerFeedbackForm from '../customer-feedback/components/CustomerFeedbackForm';
@@ -64,12 +65,27 @@ const App = () => {
   return (
     <>
       <Header />
-      <Container maxWidth="lg">
-        <header>
-          <Typography component="h1" sx={{fontWeight: 500}} variant="h3">
-            Customer feedback page
-          </Typography>
-        </header>
+      <Container maxWidth="lg" sx={{marginTop: 6}}>
+        <Typography
+          component="h1"
+          sx={{
+            alignItems: 'center',
+            display: 'flex',
+            fontWeight: 500,
+            marginBottom: 2,
+          }}
+          variant="h4"
+        >
+          Customer feedback page
+          <RateReviewIcon fontSize="large" sx={{marginLeft: 2}} />
+        </Typography>
+        <Typography
+          component="h2"
+          sx={{fontWeight: 400, marginBottom: 4}}
+          variant="h6"
+        >
+          Please fill in the form below to submit a review
+        </Typography>
         <CustomerFeedbackForm fetchReviews={fetchReviews} />
         <RatingsChart chartData={ratingsChartData} />
         {/* TODO(jackbellmont): Handle review list of 0. "No reviews" */}
