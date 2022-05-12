@@ -16,6 +16,7 @@ const App = () => {
         </Typography>
       </header>
       <CustomerFeedbackForm />
+      {/* TODO(jackbellmont): Handle review list of 0. "No reviews" */}
       <ReviewsList reviews={reviews} />
     </Container>
   );
