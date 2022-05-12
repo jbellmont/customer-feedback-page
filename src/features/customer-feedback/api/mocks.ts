@@ -53,6 +53,33 @@ export const MOCK_REVIEWS: Review[] = [
   },
 ];
 
+export const MOCK_REVIEWS_FOR_LIST: Review[] = [
+  {
+    id: '123',
+    date: new Date(2020, 2, 1),
+    name: 'John Smith',
+    email: 'john@email.com',
+    rating: 4,
+    comment: 'Molto bene!',
+  },
+  {
+    id: '456',
+    date: new Date(2022, 2, 1),
+    name: 'Jane Brown',
+    email: 'jane@email.com',
+    rating: 1,
+    comment: 'Not great.',
+  },
+  {
+    id: '789',
+    date: new Date(2022, 5, 1),
+    name: 'Perry McGee',
+    email: 'perry@email.com',
+    rating: 5,
+    comment: 'Molto bene!',
+  },
+];
+
 export const MOCK_REVIEW_PAYLOAD: ReviewPayload = {
   name: 'New Guy',
   email: 'new@email.com',
