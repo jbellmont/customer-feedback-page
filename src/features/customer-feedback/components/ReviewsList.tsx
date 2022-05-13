@@ -10,7 +10,11 @@ import {
   Stack,
 } from '@mui/material';
 
-import {avatarDarkGrey, googleLightGrey} from '../../../shared/styles/colours';
+import {
+  avatarDarkGrey,
+  googleLightGrey,
+  offWhite,
+} from '../../../shared/styles/colours';
 
 import {Review} from '../types/models';
 
@@ -45,7 +49,16 @@ const ReviewsList = ({reviews}: ReviewsListProps) => {
           <ListItem
             alignItems="flex-start"
             key={review.id}
-            sx={{borderBottom: 1, borderColor: googleLightGrey}}
+            sx={{
+              borderBottom: 1,
+              borderColor: googleLightGrey,
+              '&.MuiListItem-root': {
+                transition: 'all 100ms',
+                '&:hover': {
+                  backgroundColor: offWhite,
+                },
+              },
+            }}
           >
             <ListItemAvatar>
               <Avatar sx={{background: avatarDarkGrey}}>
