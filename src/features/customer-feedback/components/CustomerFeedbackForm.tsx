@@ -1,5 +1,9 @@
 import {Button, Stack} from '@mui/material';
+import {Box} from '@mui/system';
 import {SyntheticEvent, useEffect, useState} from 'react';
+
+import {googleGreen} from '../../../shared/styles/colours';
+
 import {createReview, ReviewPayload} from '../api/reviews';
 
 import SelectRating from './SelectRating';
@@ -81,6 +85,7 @@ const CustomerFeedbackForm = ({fetchReviews}: CustomerFeedbackFormProps) => {
       data-testid={CUSTOMER_FEEDBACK_FORM_TEST_ID}
       onSubmit={submitReview}
       name="customer-feedback"
+      style={{position: 'relative'}}
     >
       <Stack spacing={2}>
         <Stack
@@ -123,10 +128,30 @@ const CustomerFeedbackForm = ({fetchReviews}: CustomerFeedbackFormProps) => {
           value={commentValue}
         />
       </Stack>
-      <Button disabled={!isFormValid} type="submit" variant="contained">
+      <Button
+        disabled={!isFormValid}
+        sx={{position: 'relative'}}
+        type="submit"
+        variant="contained"
+      >
         Submit review
       </Button>
-      {showSuccessMessage ? <p>Review submitted successfully</p> : null}
+      {showSuccessMessage ? (
+        <Box
+          sx={{
+            bottom: -70,
+            boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px',
+            color: 'white',
+            borderRadius: 2,
+            background: googleGreen,
+            fontWeight: 500,
+            padding: 2,
+            position: 'absolute',
+          }}
+        >
+          Review submitted successfully
+        </Box>
+      ) : null}
     </form>
   );
 };
