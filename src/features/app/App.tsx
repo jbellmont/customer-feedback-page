@@ -90,7 +90,7 @@ const App = () => {
         </Typography>
 
         <Grid container spacing={2} sx={{marginBottom: 8, minHeight: 450}}>
-          <Grid item md={6} sx={{marginBottom: 10, width: '100%'}}>
+          <Grid item md={6} sx={{marginBottom: 7, width: '100%'}}>
             <CustomerFeedbackForm fetchReviews={fetchReviews} />
           </Grid>
           <Grid item md={6} sx={{width: '100%'}}>

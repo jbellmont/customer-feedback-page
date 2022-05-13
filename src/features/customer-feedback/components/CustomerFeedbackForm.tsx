@@ -93,7 +93,7 @@ const CustomerFeedbackForm = ({fetchReviews}: CustomerFeedbackFormProps) => {
         <Stack
           direction="row"
           spacing={2}
-          sx={{alignItems: 'center', height: 50}}
+          sx={{alignItems: 'center', paddingInlineStart: '14px', height: 50}}
         >
           <label htmlFor="rating">Rating</label>
           <SelectRating setValue={setRatingValue} value={ratingValue} />
