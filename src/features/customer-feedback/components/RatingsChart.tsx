@@ -35,7 +35,7 @@ export const RATINGS_CHART_TEST_ID = 'ratings-chart-test-id';
 const RatingsChart = ({chartData}: RatingsChartProps) => {
   return (
     <div className="graph-container" data-testid={RATINGS_CHART_TEST_ID}>
-      <ResponsiveContainer width={'100%'} height={388}>
+      <ResponsiveContainer width={'100%'} height={401}>
         <BarChart
           data={chartData}
           layout="vertical"
