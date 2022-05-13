@@ -74,8 +74,10 @@ const CustomerFeedbackForm = ({fetchReviews}: CustomerFeedbackFormProps) => {
       setShowSuccessMessage(true);
       resetFormValues();
       fetchReviews();
+      setTimeout(() => {
+        setShowSuccessMessage(false);
+      }, 3000);
     } catch (error) {
-      // TODO(jackbellmont): Handle error message on error.
       console.error(error);
     }
   };
