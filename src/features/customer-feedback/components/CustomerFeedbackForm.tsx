@@ -39,8 +39,9 @@ const CustomerFeedbackForm = ({fetchReviews}: CustomerFeedbackFormProps) => {
     const textInputsAreValid = Boolean(
       isNameValid && isEmailValid && isCommentValid
     );
+    const ratingIsValid: boolean = ratingValue > 0;
 
-    setIsFormValid(textInputsHaveValues && textInputsAreValid);
+    setIsFormValid(textInputsHaveValues && textInputsAreValid && ratingIsValid);
   }, [
     nameValue,
     emailValue,

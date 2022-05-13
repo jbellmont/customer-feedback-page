@@ -5,14 +5,22 @@ export interface SelectRatingProps {
   value: number;
 }
 
+export const SELECT_RATING_TEST_ID = 'select-rating-test-id';
+
 const SelectRating = ({setValue, value}: SelectRatingProps) => {
-  // TODO(jackbellmont): Handle error message when working on Form validation.
   return (
     <Rating
+      data-testid={SELECT_RATING_TEST_ID}
       name="rating"
       value={value}
-      onChange={(_, newValue) => {
-        setValue(newValue as number);
+      onChange={(event, newValue) => {
+        const targetElementValue = Number(
+          (event.target as HTMLInputElement).value
+        );
+
+        // Ensures we don't set 'value' as null and that the value is
+        // correctly being emitted in our userevent tests.
+        setValue(newValue === null ? 0 : targetElementValue);
       }}
     />
   );

@@ -37,6 +37,4 @@ describe('Input component', () => {
 
     expect(errorElement).toBeInTheDocument();
   });
-
-  // TODO(jackbellmont): Test for invalid email.
 });

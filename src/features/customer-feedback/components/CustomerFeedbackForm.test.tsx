@@ -12,6 +12,7 @@ import CustomerFeedbackForm, {
   EMAIL_TEXT_INPUT_TEST_ID,
   NAME_TEXT_INPUT_TEST_ID,
 } from './CustomerFeedbackForm';
+import {SELECT_RATING_TEST_ID} from './SelectRating';
 
 const baseProps: CustomerFeedbackFormProps = {
   fetchReviews: jest.fn(),
@@ -34,13 +35,16 @@ describe('CustomerFeedbackForm component', () => {
     const nameTextInput = screen.getByTestId(NAME_TEXT_INPUT_TEST_ID);
     await user.type(nameTextInput, 'John Smith');
 
-    // TODO(jackbellmont): Try fireEvent for Rating input??
-
     const emailTextInput = screen.getByTestId(EMAIL_TEXT_INPUT_TEST_ID);
     await user.type(emailTextInput, 'valid@gmail.com');
 
     const commentTextInput = screen.getByTestId(COMMENT_TEXT_INPUT_TEST_ID);
     await user.type(commentTextInput, 'Comment');
+
+    const ratingsComponent = screen.getByTestId(SELECT_RATING_TEST_ID);
+    // eslint-disable-next-line testing-library/no-node-access
+    const oneStarElement = ratingsComponent.children[0];
+    await user.click(oneStarElement);
 
     const submitButton = screen.getByRole('button', {name: /submit review/i});
     await user.click(submitButton);
