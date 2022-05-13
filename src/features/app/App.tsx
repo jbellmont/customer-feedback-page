@@ -103,7 +103,9 @@ const App = () => {
         </Typography>
         <ReviewsList reviews={reviews} />
       </Container>
-      <ScrollToTopButton />
+      <footer>
+        <ScrollToTopButton />
+      </footer>
     </>
   );
 };
