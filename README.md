@@ -2,9 +2,7 @@
 
 A client-side web app that allows users to submit a review for a product.
 
-The reviews submitted are displayed in a list (ordered by the latest review),
-and the data for the total count of each star-rating is visualised in a bar
-chart.
+The reviews submitted are displayed in a list (ordered by the latest review), and the data for the total count of each star-rating is visualised in a bar chart.
 
 -> **[Live link](https://customer-feedback-page.onrender.com/)**
 -> **[Trello Kanban board](https://trello.com/b/h24gm7oB/customer-feedback-page)**
@@ -18,7 +16,7 @@ chart.
 ## Local development
 To run the project locally, use `npm run dev`.
 
-As the project uses `localStorage` to persist data in the browser, for your first time viewing the app, there will be no reviews present. Reviews that you add will persist over different sessions, only within the browser used.
+As the project uses `localStorage` to persist data in the browser, for your first time viewing the app there will be no reviews present. Reviews that you add will persist over different sessions, only within the browser used.
 
 ## Tech stack
 | Technology      | Description | Reason for use |
@@ -30,8 +28,8 @@ As the project uses `localStorage` to persist data in the browser, for your firs
 | Recharts   | Charting library        | Easy to use API for implementing SVG charts. Highly customisable, is well supported, and has clear documentation.          |
 | Jest & Testing Library   | Unit and integration tests | Simple to use testing framework, well used and supported in the community. Testing Library extends this to create tests with behaviours that are more realistic to how a user would interact with your app.          |
 | Cypress   | e2e tests        | Intuitive API and interface for writing and running e2e tests. Easy to debug. Excellent developer experience.          |
-| Eslint   | Linting        | Catch problems and smells in codebase. Enforces Google standards. Set up to auto-fix issues on commit via Husky pre-commit hook. React and accessibility related rule extensions used. |
-| Prettier   | Formatting        | Enforces a consistent formatting style. Fixes and formats on commit using Husky pre-commit hook.          |
+| Eslint   | Linting        | Catch problems in codebase. Set up to auto-fix issues on commit via Husky pre-commit hook. React and accessibility related rule extensions used. |
+| Prettier   | Formatting        | Enforces a consistent formatting style. Formats on commit using Husky pre-commit hook.          |
 | Github actions   | CI        | CI automation process - testing that builds work and that all unit, integration and e2e tests pass before being allowed to merge to Master.          |
 | Render   | CD        | Hosts the app. Connects to the Github repo, and will auto-deploy when there are changes to the Master branch. |
 
@@ -58,7 +56,7 @@ As the project uses `localStorage` to persist data in the browser, for your firs
 - Material UI TextField used to create re-usable TextInput component, allowing the flexibility for it to be text or email type, and multi or single lined.
 - **Bonus feature**: Form validation for max-character limit and email regex check.
 - **Bonus feature**: Invalid inputs show error message, tailored to each field.
-- Material UI Ratings component used for 1-5 rating; perfectly fit the requirement.
+- Material UI Ratings component used for 1-5 rating; perfectly fits the requirement.
 - Form submit button is disabled until form is valid.
 - **Bonus feature**: Green success message is displayed on form submisssion, disappearing after 3 seconds.
 
@@ -84,12 +82,12 @@ Review {
 
 **Chart**
 - Stacked bar chart has the 5-star score as at the top, making it clear to user that it is the 'best' score in the distribution.
-- Uses same yellow hex colour as the star rating component, and the same light grey on hover as other parts of the app to ensure visual consistency
+- Visual colour consistency across other parts of the app.
 
 **Latest review comments**
 - Displays the latest comment, sorted by most recent date.
 - **Bonus feature**: Displays the reviewer's name, date submitted, star-rating, and an avatar of their initials (e.g. John Smith would be JS).
-- **Bonus feature**: As the page does not use pagination, there is a risk of the list becoming long. A scroll to top of page button has been included to easily navigate back to the top.
+- **Bonus feature**: A scroll to top of page button to improve UX.
 
 ## Limitations
 - `localStorage` is only scoped to one browser; data does not persist across devices.
