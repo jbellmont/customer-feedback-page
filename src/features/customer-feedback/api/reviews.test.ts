@@ -9,7 +9,7 @@ import {
   MOCK_REVIEWS,
   MOCK_REVIEW_PAYLOAD,
   MOCK_NEW_REVIEW,
-} from './mocks';
+} from './test-lib';
 import {getReviews, createReview} from './reviews';
 
 beforeAll(() => {

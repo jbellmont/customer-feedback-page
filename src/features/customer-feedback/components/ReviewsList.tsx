@@ -30,7 +30,7 @@ const ReviewsList = ({reviews}: ReviewsListProps) => {
     }, '');
   };
 
-  const sortReviewsByLatestDate = (reviews: Review[]): Review[] => {
+  const sortReviewsByMostRecentDate = (reviews: Review[]): Review[] => {
     return [...reviews].sort((a, b) => {
       return b.date.getTime() - a.date.getTime();
     });
@@ -38,7 +38,7 @@ const ReviewsList = ({reviews}: ReviewsListProps) => {
 
   const transformReviews = (reviews: Review[]): Review[] => {
     // Add more array transformation functions to the 'pipeline', e.g. filter.
-    return sortReviewsByLatestDate(reviews);
+    return sortReviewsByMostRecentDate(reviews);
   };
 
   const reviewsToDisplay: Review[] = transformReviews(reviews);

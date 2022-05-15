@@ -14,7 +14,9 @@ export interface ReviewPayload {
 export const REVIEWS_STORAGE_KEY = 'reviews';
 
 export const getReviews = (): Review[] => {
-  const serializedReviews: string = localStorage.getItem(REVIEWS_STORAGE_KEY)!;
+  const serializedReviews: string = localStorage.getItem(
+    REVIEWS_STORAGE_KEY
+  ) as string;
   if (!serializedReviews) return [];
 
   const parsedReviews: Review[] = JSON.parse(
