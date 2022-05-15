@@ -34,7 +34,11 @@ const TextInput = ({
     : SINGLE_LINE_CHARACTER_LIMIT;
 
   const isNameValid = (name: string): boolean => {
-    return name.length > 0 && name.length <= maxCharacters;
+    const isNameWithinCharacterLimit =
+      name.length > 0 && name.length <= maxCharacters;
+    const doesNameContainMoreThanWhitespace = /.*\S.*/.test(name);
+
+    return isNameWithinCharacterLimit && doesNameContainMoreThanWhitespace;
   };
 
   const isEmailValid = (email: string): boolean => {
