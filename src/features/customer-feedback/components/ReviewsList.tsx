@@ -24,7 +24,8 @@ export interface ReviewsListProps {
 
 const ReviewsList = ({reviews}: ReviewsListProps) => {
   const createAvatarNameInitials = (name: string): string => {
-    return name.split(' ').reduce((previous, current) => {
+    // Split the string on any length of whitespace.
+    return name.split(/\s+/).reduce((previous, current) => {
       return previous + current[0].toUpperCase();
     }, '');
   };
