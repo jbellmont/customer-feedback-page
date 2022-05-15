@@ -64,10 +64,10 @@ const CustomerFeedbackForm = ({fetchReviews}: CustomerFeedbackFormProps) => {
     event.preventDefault();
 
     const newReviewPayload: ReviewPayload = {
-      name: nameValue,
-      email: emailValue,
-      rating: ratingValue as number,
-      comment: commentValue,
+      name: nameValue.trim(),
+      email: emailValue.trim(),
+      rating: ratingValue,
+      comment: commentValue.trim(),
     };
 
     try {
