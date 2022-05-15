@@ -4,8 +4,8 @@ A client-side web app that allows users to submit a review for a product.
 
 The reviews submitted are displayed in a list (ordered by the latest review), and the data for the total count of each star-rating is visualised in a bar chart.
 
--> **[Live link](https://customer-feedback-page.onrender.com/)**
--> **[Trello Kanban board](https://trello.com/b/h24gm7oB/customer-feedback-page)**
+- **[Live link](https://customer-feedback-page.onrender.com/)**
+- **[Trello Kanban board](https://trello.com/b/h24gm7oB/customer-feedback-page)**
 
 ## Installation instructions
 1. Clone the repo `git clone https://github.com/jbellmont/customer-feedback-page.git`.
