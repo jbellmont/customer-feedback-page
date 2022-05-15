@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import {render, screen, within} from '@testing-library/react';
-import {MOCK_REVIEWS_FOR_LIST} from '../api/mocks';
+import {MOCK_REVIEWS_FOR_LIST} from '../api/test-lib';
 
 import ReviewsList, {ReviewsListProps} from './ReviewsList';
 

@@ -3,6 +3,7 @@ import {Box} from '@mui/system';
 import {SyntheticEvent, useEffect, useState} from 'react';
 
 import {googleGreen} from '../../../shared/styles/colours';
+import {dropShadow} from '../../../shared/styles/shadows';
 
 import {createReview, ReviewPayload} from '../api/reviews';
 
@@ -13,6 +14,8 @@ export const CUSTOMER_FEEDBACK_FORM_TEST_ID = 'form-test-id';
 export const NAME_TEXT_INPUT_TEST_ID = 'name-test-id';
 export const EMAIL_TEXT_INPUT_TEST_ID = 'email-test-id';
 export const COMMENT_TEXT_INPUT_TEST_ID = 'comment-test-id';
+
+const SUCCESS_MESSAGE_DURATION = 3000;
 
 export interface CustomerFeedbackFormProps {
   fetchReviews: () => void;
@@ -31,6 +34,8 @@ const CustomerFeedbackForm = ({fetchReviews}: CustomerFeedbackFormProps) => {
   const [isCommentValid, setIsCommentValid] = useState(true);
 
   const [isFormValid, setIsFormValid] = useState(false);
+
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
   useEffect(() => {
     const textInputsHaveValues = Boolean(
@@ -59,7 +64,6 @@ const CustomerFeedbackForm = ({fetchReviews}: CustomerFeedbackFormProps) => {
     setCommentValue('');
   };
 
-  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const submitReview = (event: SyntheticEvent) => {
     event.preventDefault();
 
@@ -77,7 +81,7 @@ const CustomerFeedbackForm = ({fetchReviews}: CustomerFeedbackFormProps) => {
       fetchReviews();
       setTimeout(() => {
         setShowSuccessMessage(false);
-      }, 3000);
+      }, SUCCESS_MESSAGE_DURATION);
     } catch (error) {
       console.error(error);
     }
@@ -143,7 +147,7 @@ const CustomerFeedbackForm = ({fetchReviews}: CustomerFeedbackFormProps) => {
         <Box
           sx={{
             bottom: -70,
-            boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px',
+            boxShadow: dropShadow,
             color: 'white',
             borderRadius: 2,
             background: googleGreen,

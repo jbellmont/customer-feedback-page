@@ -1,4 +1,4 @@
-import {MOCK_UUID} from '../api/mocks';
+import {MOCK_UUID} from '../api/test-lib';
 jest.mock('uuid', () => ({v4: () => MOCK_UUID}));
 
 import '@testing-library/jest-dom';
@@ -26,8 +26,6 @@ describe('CustomerFeedbackForm component', () => {
     expect(formElement).toBeInTheDocument();
   });
 
-  // Due to the inability to query and then click on the MUI Rating component,
-  // I could not test user interaction with it.
   it('should display a success message on successful form submission', async () => {
     const user = userEvent.setup();
     render(<CustomerFeedbackForm {...baseProps} />);

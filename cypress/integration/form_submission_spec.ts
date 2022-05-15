@@ -1,7 +1,7 @@
 const muiListClassName = '.MuiList-root';
 
 describe('Customer Feedback Page', () => {
-  it('Adds a new review on submit', () => {
+  it('should add a new review on submit with valid form', () => {
     cy.visit('/');
     const nameText = 'John Smith';
     const emailText = 'john@email.com';
@@ -48,7 +48,7 @@ describe('Customer Feedback Page', () => {
       .should('exist');
   });
 
-  it('Unable to add a new review on submit with invalid form', () => {
+  it('should be unable to add a new review on submit with invalid form', () => {
     cy.visit('/');
 
     // Enter form values.
